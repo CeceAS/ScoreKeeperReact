@@ -7,24 +7,26 @@ export default function AllPlayersContainer(props) {
         return (
           <section className="each-player_section" key={p.id}>
             <div className="row">
-              <div className="delete-player_btn">
-                <button
-                  onClick={() => props.deletePlayer(p.id)}
-                  style={{
-                    backgroundColor: p.color,
-                    borderColor: p.color,
-                    color: "white",
-                  }}
-                >
-                  X
-                </button>
-              </div>
-              <div className="player-name_container">
-                <div
-                  className="player-name"
-                  style={{ backgroundColor: p.color }}
-                >
-                  {p.playerName}
+              <div className="mobile-row">
+                <div className="delete-player_btn">
+                  <button
+                    onClick={() => props.deletePlayer(p.id)}
+                    style={{
+                      backgroundColor: p.color,
+                      borderColor: p.color,
+                      color: "white",
+                    }}
+                  >
+                    X
+                  </button>
+                </div>
+                <div className="player-name_container">
+                  <div
+                    className="player-name"
+                    style={{ backgroundColor: p.color }}
+                  >
+                    {p.playerName}
+                  </div>
                 </div>
               </div>
               <div className="score_container">

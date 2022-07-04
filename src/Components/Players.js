@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import AddPlayersContainer from "./AddPlayersContainer";
 import AllPlayersContainer from "./AllPlayersContainer";
 import WinnerContainer from "./WinnerContainer";
-
 import CalculateTotalScore from "../Functions/CalculateTotalScore";
 
 export default function Players() {

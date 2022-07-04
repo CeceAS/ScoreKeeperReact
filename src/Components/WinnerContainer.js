@@ -9,7 +9,7 @@ export default function WinnerContainer(props) {
       return (
         <h2>
           <span
-            className="winner-title"
+            className="winner-title winner-name"
             style={{
               color: winner.color,
               background: winner.color,
@@ -20,9 +20,9 @@ export default function WinnerContainer(props) {
           >
             {winner.playerName}
           </span>
-          is winning with a score of
+          <span className="text">is winning with a score of</span>
           <span
-            className="winner-title"
+            className="winner-title winner-score"
             style={{
               color: winner.color,
               background: winner.color,
@@ -39,9 +39,11 @@ export default function WinnerContainer(props) {
   }
 
   return (
-    <section className="winning-player_section">
+    <>
       <h3>Who's Winning?</h3>
-      <WinningPlayer />
-    </section>
+      <section className="winning-player_section">
+        <WinningPlayer />
+      </section>
+    </>
   );
 }

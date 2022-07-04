@@ -43,8 +43,10 @@ h2 {
 }
 
 h3 {
-  font-size: 14px;
+  font-size: 12px;
   margin: 0;
+  text-align: center;
+  margin-bottom: -10px;
 }
 
 h5 {
@@ -148,7 +150,7 @@ section.all-players_section {
 /* player's name */
 
 .player-name_container {
-  min-width: 33%;
+  width: 100%;
   display: flex;
 }
 
@@ -264,4 +266,65 @@ input.score_input {
 
 .winning-player_section h2 {
   margin: 0;
+}
+
+.mobile-row {
+  display: flex;
+  width: 50%;
+}
+
+@media screen and (max-width: 800px) {
+  /* Add Player Container */
+  .add-players_section form {
+    flex-direction: column;
+  }
+
+  .add-players_section form div {
+    width: 100%;
+  }
+
+  .color-picker_container {
+    margin: 18px;
+  }
+  /* All Players Container */
+  .row {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .mobile-row {
+    width: 100%;
+    margin-bottom: 18px;
+  }
+
+  .score-input_container {
+    margin: 0;
+  }
+
+  .score_container {
+    display: flex;
+    justify-content: space-around;
+    height: 40px;
+  }
+
+  .total-score {
+    line-height: 1;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .delete-player_btn {
+    margin-right: 5px;
+  }
+  .score-input_container {
+    width: auto;
+    max-width: 80%;
+  }
+  .score_container {
+    justify-content: space-between;
+  }
+
+  .winning-player_section h2 .text {
+    display: block;
+  }
 }
