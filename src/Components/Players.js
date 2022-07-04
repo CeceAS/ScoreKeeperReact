@@ -24,17 +24,25 @@ export default function Players() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    setAllPlayers((prev) => {
-      setNewPlayer({
-        id: (Date.now() + "").slice(-10),
-        playerName: "",
-        color: "#f6b73c",
-        scores: [],
-        totalScore: 0,
-      });
+    const allNames = allPlayers.map((p) => p.playerName);
 
-      return [...prev, newPlayer];
-    });
+    if (allNames.includes(newPlayer.playerName)) {
+      alert("Player exists. Please choose a different name");
+
+      return;
+    } else {
+      setAllPlayers((prev) => {
+        setNewPlayer({
+          id: (Date.now() + "").slice(-10),
+          playerName: "",
+          color: "#f6b73c",
+          scores: [],
+          totalScore: 0,
+        });
+
+        return [...prev, newPlayer];
+      });
+    }
   };
 
   //Add a new score:
