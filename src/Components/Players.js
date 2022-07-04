@@ -57,6 +57,7 @@ export default function Players() {
     e.preventDefault();
     // FIX: not going blank
     setNewScore("");
+
     player.scores.push(+newScore);
     calcTotalScore(player);
   };
@@ -80,12 +81,37 @@ export default function Players() {
 
   // display currently winning player:
   function WinningPlayer() {
+    const winner = descScoresArray[0];
+    console.log(winner);
+
     if (descScoresArray.length > 0)
       return (
         <h2>
-          <span className="winner-title">{descScoresArray[0]?.playerName}</span>
+          <span
+            className="winner-title"
+            style={{
+              color: winner.color,
+              background: winner.color,
+              WebkitBackgroundClip: "text",
+              backgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+          >
+            {winner.playerName}
+          </span>
           is winning with a score of
-          <span className="winner-title">{descScoresArray[0]?.totalScore}</span>
+          <span
+            className="winner-title"
+            style={{
+              color: winner.color,
+              background: winner.color,
+              WebkitBackgroundClip: "text",
+              backgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+          >
+            {winner.totalScore}
+          </span>
           🥳
         </h2>
       );
