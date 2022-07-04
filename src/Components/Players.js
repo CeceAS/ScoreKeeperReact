@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import AddPlayersContainer from "./AddPlayersContainer";
 import AllPlayersContainer from "./AllPlayersContainer";
+import WinnerContainer from "./WinnerContainer";
 
 export default function Players() {
   const [newPlayer, setNewPlayer] = useState({
@@ -25,12 +26,9 @@ export default function Players() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const allNames = allPlayers.map((p) => p.playerName);
-
     if (allNames.includes(newPlayer.playerName)) {
       alert("Player exists. Please choose a different name");
-
       return;
     } else {
       setAllPlayers((prev) => {
@@ -59,7 +57,6 @@ export default function Players() {
     e.preventDefault();
     // FIX: not going blank
     setNewScore("");
-
     player.scores.push(+newScore);
     calcTotalScore(player);
   };
@@ -81,43 +78,6 @@ export default function Players() {
     (a, b) => b.totalScore - a.totalScore
   );
 
-  // display currently winning player:
-  function WinningPlayer() {
-    const winner = descScoresArray[0];
-
-    if (descScoresArray.length > 0)
-      return (
-        <h2>
-          <span
-            className="winner-title"
-            style={{
-              color: winner.color,
-              background: winner.color,
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            {winner.playerName}
-          </span>
-          is winning with a score of
-          <span
-            className="winner-title"
-            style={{
-              color: winner.color,
-              background: winner.color,
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            {winner.totalScore}
-          </span>
-          🎉
-        </h2>
-      );
-  }
-
   return (
     <>
       <AddPlayersContainer
@@ -131,11 +91,7 @@ export default function Players() {
         handleScoreSubmit={handleScoreSubmit}
         handleNewScore={handleNewScore}
       />
-
-      <section className="winning-player_section">
-        <h3>Who's Winning?</h3>
-        <WinningPlayer />
-      </section>
+      <WinnerContainer descScoresArray={descScoresArray} />
     </>
   );
 }
