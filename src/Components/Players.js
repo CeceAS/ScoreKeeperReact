@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 
 export default function Players() {
-  // const [players, setPlayers] = useState([]);
-
   const [newPlayer, setNewPlayer] = useState({
     id: (Date.now() + "").slice(-10),
     playerName: "",
