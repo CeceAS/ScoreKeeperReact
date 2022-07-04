@@ -3,6 +3,8 @@ import AddPlayersContainer from "./AddPlayersContainer";
 import AllPlayersContainer from "./AllPlayersContainer";
 import WinnerContainer from "./WinnerContainer";
 
+import CalculateTotalScore from "../Functions/CalculateTotalScore";
+
 export default function Players() {
   const [newPlayer, setNewPlayer] = useState({
     id: (Date.now() + "").slice(-10),
@@ -58,20 +60,14 @@ export default function Players() {
     // FIX: not going blank
     setNewScore("");
     player.scores.push(+newScore);
-    calcTotalScore(player);
+    CalculateTotalScore(player);
   };
 
-  // calculate total score:
-  function calcTotalScore(player) {
-    const totalScore = player.scores.reduce((acc, score) => acc + score, 0);
-    return (player.totalScore = totalScore);
-  }
-
-  //delete player:
-  const deletePlayer = function (p) {
+  // delete a player
+  function deletePlayer(p) {
     const players = allPlayers.filter((player) => player.id !== p);
     setAllPlayers(players);
-  };
+  }
 
   // find currently winning player:
   const descScoresArray = [...allPlayers].sort(
