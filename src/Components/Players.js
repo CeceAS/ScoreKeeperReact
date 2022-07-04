@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import AddPlayersContainer from "./AddPlayersContainer";
 
 export default function Players() {
   const [newPlayer, setNewPlayer] = useState({
@@ -82,7 +83,6 @@ export default function Players() {
   // display currently winning player:
   function WinningPlayer() {
     const winner = descScoresArray[0];
-    console.log(winner);
 
     if (descScoresArray.length > 0)
       return (
@@ -119,37 +119,11 @@ export default function Players() {
 
   return (
     <>
-      <section className="add-players_section">
-        <form onSubmit={handleSubmit}>
-          <div>
-            <input
-              type="text"
-              placeholder="Player's Name"
-              name="playerName"
-              value={newPlayer.playerName}
-              onChange={handleChange}
-              className="player-name_input"
-            />
-          </div>
-
-          <div className="color-picker_container">
-            <h5>Choose your color:</h5>
-            <input
-              type="color"
-              id="color-picker"
-              name="color"
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <input
-              className="submit-btn"
-              disabled={!newPlayer.playerName}
-              type="submit"
-            />
-          </div>
-        </form>
-      </section>
+      <AddPlayersContainer
+        handleSubmit={handleSubmit}
+        newPlayer={newPlayer}
+        handleChange={handleChange}
+      />
       <section className="all-players_section">
         {allPlayers?.map((p) => {
           return (
