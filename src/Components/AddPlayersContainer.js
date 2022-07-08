@@ -6,6 +6,7 @@ export default function AddPlayersContainer(props) {
       <form onSubmit={props.handleSubmit}>
         <div>
           <input
+            data-testid="player-name"
             type="text"
             placeholder="Player's Name"
             name="playerName"

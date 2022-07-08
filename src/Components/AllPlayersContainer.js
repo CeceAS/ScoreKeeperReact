@@ -33,6 +33,7 @@ export default function AllPlayersContainer(props) {
                 <div className="score-input_container">
                   <form onSubmit={(e) => props.handleScoreSubmit(e, p)}>
                     <input
+                      data-testid="new-score"
                       className="score_input"
                       style={{ borderColor: p.color, color: p.color }}
                       type="number"
