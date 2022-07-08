@@ -4,7 +4,7 @@ import "@testing-library/jest-dom";
 
 import AllPlayersContainer from "./AllPlayersContainer";
 
-describe("<AllPlayersContainer/>", () => {
+describe("<AllPlayersContainer>", () => {
   test("check that player section doesn't exist", () => {
     render(<AllPlayersContainer />);
     const playerSection = screen.queryByTestId("each-player-section");

@@ -4,22 +4,13 @@ import "@testing-library/jest-dom";
 
 import AddPlayersContainer from "./AddPlayersContainer";
 
-// describe("<AddPlayersContainer/>", () => {
-//   test("pass valid name to test input field", () => {
-//     render(<AddPlayersContainer />);
-//     screen.debug();
-//     //     const playerNameInput = screen.getByTestId("player-name");
-//     //     userEvent.type(playerNameInput, "jack");
-
-//     //     expect(screen.getByTestId("player-name")).toHaveValue("jack");
-//   });
-// });
-
 describe("<AddPlayersContainer/>", () => {
   test("player name input exist", () => {
-    render(<AddPlayersContainer />);
+    render(<AddPlayersContainer newPlayer={{ playerName: "Jack" }} />);
     const playerNameInput = screen.queryByTestId("player-name");
 
     expect(playerNameInput).toBeInTheDocument();
+
+    // add a couple vlues and make sure they sum correctly
   });
 });

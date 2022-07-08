@@ -9,6 +9,7 @@ export default function Players() {
     id: (Date.now() + "").slice(-10),
     playerName: "",
     color: "#f29f33",
+    currentScore: 0,
     scores: [],
     totalScore: 0,
   });
@@ -41,6 +42,7 @@ export default function Players() {
           id: (Date.now() + "").slice(-10),
           playerName: "",
           color: "#f6b73c",
+          currentScore: 0,
           scores: [],
           totalScore: 0,
         });
@@ -54,18 +56,44 @@ export default function Players() {
 
   //Add a new score:
 
-  const handleNewScore = (e) => {
+  const handleNewScore = (e, playerId) => {
     e.preventDefault();
-    const addThisScore = e.target.value;
-    setNewScore(addThisScore);
+
+    const updatedPlayers = allPlayers.map((p) => {
+      if (p.id === playerId) {
+        return { ...p, currentScore: +e.target.value };
+      } else {
+        return p;
+      }
+    });
+
+    console.log(updatedPlayers);
+
+    setAllPlayers(updatedPlayers);
+
+    // const addThisScore = e.target.value;
+    // setNewScore(addThisScore);
   };
 
   const handleScoreSubmit = function (e, player) {
     e.preventDefault();
     // FIX: not going blank
-    setNewScore("");
-    player.scores.push(+newScore);
-    CalculateTotalScore(player);
+    // setNewScore("");
+    // player.scores.push(+newScore);
+
+    const updatePlayers = allPlayers.map((p) => {
+      // debugger;
+      if (p.id === player.id) {
+        const currentScore = p.currentScore;
+        return { ...p, scores: [...p.scores, currentScore], currentScore: 0 };
+      } else {
+        return { ...p, currentScore: 0 };
+      }
+    });
+
+    setAllPlayers(updatePlayers);
+
+    // CalculateTotalScore(player);
   };
 
   // delete a player

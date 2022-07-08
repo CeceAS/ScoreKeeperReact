@@ -4,6 +4,7 @@ export default function AllPlayersContainer(props) {
   return (
     <section className="all-players_section">
       {props.allPlayers?.map((p) => {
+        const total = p.scores.reduce((acc, cur) => (acc += cur), 0);
         return (
           <section
             className="each-player_section"
@@ -42,8 +43,8 @@ export default function AllPlayersContainer(props) {
                       style={{ borderColor: p.color, color: p.color }}
                       type="number"
                       name="newScore"
-                      value={p.newScore}
-                      onChange={(e) => props.handleNewScore(e, p)}
+                      value={p.currentScore}
+                      onChange={(e) => props.handleNewScore(e, p.id)}
                     ></input>
                     <button
                       type="submit"
@@ -59,7 +60,7 @@ export default function AllPlayersContainer(props) {
                 </div>
                 <div className="total-score_container">
                   <span className="bold small">Score</span>
-                  <span className="total-score bold">{p.totalScore}</span>
+                  <span className="total-score bold">{total}</span>
                 </div>
               </div>
             </div>
