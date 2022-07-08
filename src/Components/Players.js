@@ -15,6 +15,8 @@ export default function Players() {
 
   const [allPlayers, setAllPlayers] = useState([]);
   const [newScore, setNewScore] = useState("");
+  let showErrorMsg = false;
+  let errorMsg;
 
   // add player:
   const handleChange = (e) => {
@@ -31,6 +33,8 @@ export default function Players() {
     if (allNames.includes(newPlayer.playerName)) {
       alert("Player exists. Please choose a different name");
       return;
+    } else if (newPlayer.playerName.length === 0) {
+      alert("You have to put in a player's name. Please try again!");
     } else {
       setAllPlayers((prev) => {
         setNewPlayer({

@@ -28,7 +28,7 @@ export default function AddPlayersContainer(props) {
         <div>
           <input
             className="submit-btn"
-            disabled={!props.newPlayer.playerName}
+            // disabled={!props.newPlayer.playerName}
             type="submit"
           />
         </div>

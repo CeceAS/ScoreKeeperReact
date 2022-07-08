@@ -5,7 +5,11 @@ export default function AllPlayersContainer(props) {
     <section className="all-players_section">
       {props.allPlayers?.map((p) => {
         return (
-          <section className="each-player_section" key={p.id}>
+          <section
+            className="each-player_section"
+            key={p.id}
+            data-testid="each-player-section"
+          >
             <div className="row">
               <div className="mobile-row">
                 <div className="delete-player_btn">

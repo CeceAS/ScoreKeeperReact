@@ -1,15 +1,13 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import "@testing-library/jest-dom";
 
 import AllPlayersContainer from "./AllPlayersContainer";
 
 describe("<AllPlayersContainer/>", () => {
-  test("pass valid number to input field", () => {
+  test("check that player section doesn't exist", () => {
     render(<AllPlayersContainer />);
-    screen.debug();
-    // const playerScoreInput = screen.getByTestId("new-score");
-    // userEvent.type(playerScoreInput, "25");
-
-    // expect(screen.getByTestId("new-score")).toHaveValue("25");
+    const playerSection = screen.queryByTestId("each-player-section");
+    expect(playerSection).not.toBeInTheDocument();
   });
 });
