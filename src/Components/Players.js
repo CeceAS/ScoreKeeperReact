@@ -15,8 +15,7 @@ export default function Players() {
 
   const [allPlayers, setAllPlayers] = useState([]);
   const [newScore, setNewScore] = useState("");
-  let showErrorMsg = false;
-  let errorMsg;
+  const [errorMsg, setErrorMsg] = useState("");
 
   // add player:
   const handleChange = (e) => {
@@ -31,10 +30,11 @@ export default function Players() {
     e.preventDefault();
     const allNames = allPlayers.map((p) => p.playerName);
     if (allNames.includes(newPlayer.playerName)) {
-      alert("Player exists. Please choose a different name");
+      setErrorMsg("Player exists. Please choose a different name!");
       return;
     } else if (newPlayer.playerName.length === 0) {
-      alert("You have to put in a player's name. Please try again!");
+      setErrorMsg("You have to put in a player's name. Please try again!");
+      return;
     } else {
       setAllPlayers((prev) => {
         setNewPlayer({
@@ -47,6 +47,8 @@ export default function Players() {
 
         return [...prev, newPlayer];
       });
+
+      setErrorMsg("");
     }
   };
 
@@ -83,6 +85,7 @@ export default function Players() {
         handleSubmit={handleSubmit}
         newPlayer={newPlayer}
         handleChange={handleChange}
+        errorMsg={errorMsg}
       />
       <AllPlayersContainer
         allPlayers={allPlayers}

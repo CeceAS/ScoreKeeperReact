@@ -1,6 +1,7 @@
 import React from "react";
 
 export default function AddPlayersContainer(props) {
+  console.log("props:", props);
   return (
     <section className="add-players_section">
       <form onSubmit={props.handleSubmit}>
@@ -33,6 +34,7 @@ export default function AddPlayersContainer(props) {
           />
         </div>
       </form>
+      <div className="error-msg">{props.errorMsg}</div>
     </section>
   );
 }
